@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Билеты Bühne SCHA!">
+<meta property="og:image" content="img/1_fantazia.jpg">
+<title>Билеты Bühne SCHA!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;800;900&display=swap">
+<style>
+/* Афиша-лента: чёрный зал, синие плашки SCHA!, карточка = пост + кнопка */
+:root{--bg:#000;--fg:#fff;--blue:#0D42D2;--muted:#a9adb8;--line:#22242b;--disp:"Montserrat",Arial,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}img{max-width:100%}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--disp);font-size:16px;line-height:1.45;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 56px}
+header{display:flex;flex-direction:column;gap:18px;margin-bottom:40px}
+header img{width:120px}
+h1{font-weight:800;font-size:clamp(2.2rem,7vw,4.2rem);line-height:.98;text-transform:uppercase;letter-spacing:-.02em;text-wrap:balance;margin:0}
+.plate{align-self:flex-start;background:var(--blue);font-weight:900;text-transform:uppercase;font-size:clamp(1rem,3vw,1.35rem);padding:.45em .8em .5em;transform:rotate(-1.6deg)}
+.lead{color:var(--muted);max-width:60ch;margin:0}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:40px 28px}
+.ev{display:flex;flex-direction:column;gap:16px;min-width:0}
+.pic img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.info{display:flex;flex-direction:column;gap:6px;flex:1}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.date{font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.age{border:2px solid var(--fg);font-weight:800;font-size:.8rem;padding:1px 6px}
+.tour{background:var(--blue);font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px}
+h2{font-weight:800;font-size:1.5rem;line-height:1.1;text-transform:uppercase;margin:4px 0 0;text-wrap:balance}
+.sub{margin:0;font-weight:500}
+.lang{margin:0;color:var(--muted);font-size:.9rem}
+.buy{margin-top:auto;align-self:flex-start;display:inline-flex;gap:.5em;background:var(--fg);color:var(--bg);text-decoration:none;font-weight:900;text-transform:uppercase;letter-spacing:.04em;padding:14px 22px;transition:background .15s,color .15s}
+.info .buy{margin-top:12px}
+.buy:hover,.buy:focus-visible{background:var(--blue);color:var(--fg)}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 28px;color:var(--muted);font-weight:300}
+footer a{color:var(--fg)}
+@media (prefers-reduced-motion:reduce){.buy{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><img src="img/logo.svg" alt="Bühne SCHA!">
+<h1>Декабрь<br>в SCHA!</h1>
+<div class="plate">Билеты на все события</div>
+<p class="lead">Kulturzentrum und Theaterbühne in der Spandauer Altstadt. Нажмите «Купить билет», и откроется страница продажи на Fienta.</p></header>
+<main class="list">
+<article class="ev">
+<a class="pic" href="https://fienta.com/improvizacionnyy-spektakl-fantaziya-dlya-detey-v-buhne-scha" target="_blank" rel="noopener"><img src="img/1_fantazia.jpg" alt="Фантазия" loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">15 декабря · 17:30</span><span class="age">3+</span><span class="tour">Гастроли</span></div>
+<h2>Фантазия</h2><p class="sub">Flashback Lab · импровизационный спектакль для всей семьи</p><p class="lang">Язык: русский</p>
+<a class="buy" href="https://fienta.com/improvizacionnyy-spektakl-fantaziya-dlya-detey-v-buhne-scha" target="_blank" rel="noopener">Купить билет <span aria-hidden="true">→</span></a></div></article>
+<article class="ev">
+<a class="pic" href="https://fienta.com/nezabyvaemyy-sluchay-improvizacionnyy-spektakl-dlya-vzroslyh-v-buhne-scha" target="_blank" rel="noopener"><img src="img/2_nezabyvaemyj.jpg" alt="Незабываемый случай" loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">15 декабря · 20:00</span><span class="age">16+</span><span class="tour">Гастроли</span></div>
+<h2>Незабываемый случай</h2><p class="sub">Flashback Lab · импровизационный спектакль</p><p class="lang">Язык: русский</p>
+<a class="buy" href="https://fienta.com/nezabyvaemyy-sluchay-improvizacionnyy-spektakl-dlya-vzroslyh-v-buhne-scha" target="_blank" rel="noopener">Купить билет <span aria-hidden="true">→</span></a></div></article>
+<article class="ev">
+<a class="pic" href="https://fienta.com/spektakl-m-2" target="_blank" rel="noopener"><img src="img/3_M.jpg" alt="М." loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">17 и 18 декабря · 20:00</span><span class="age">16+</span></div>
+<h2>М.</h2><p class="sub">Реж. Костя Новицкий · по мотивам «Старика и моря» Эрнеста Хемингуэя</p><p class="lang">Язык: русский с немецкими субтитрами</p>
+<a class="buy" href="https://fienta.com/spektakl-m-2" target="_blank" rel="noopener">Купить билет <span aria-hidden="true">→</span></a></div></article>
+<article class="ev">
+<a class="pic" href="https://fienta.com/rozhdestvenskoe-kino-v-buhne-scha" target="_blank" rel="noopener"><img src="img/5_kino.jpg" alt="Рождественское кино" loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">26 декабря · 14:00 и 17:00</span><span class="age">6+ / 16+</span></div>
+<h2>Рождественское кино</h2><p class="sub">14:00 семейный показ, 6+ · 17:00 для взрослых, 16+. Чай и угощения входят в билет</p><p class="lang">Какие фильмы, секрет</p>
+<a class="buy" href="https://fienta.com/rozhdestvenskoe-kino-v-buhne-scha" target="_blank" rel="noopener">Купить билет <span aria-hidden="true">→</span></a></div></article>
+<article class="ev">
+<a class="pic" href="https://fienta.com/spektakl-pohoronite-menya-za-plintusom-2" target="_blank" rel="noopener"><img src="img/4_plintus.jpg" alt="Похороните меня за плинтусом" loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">29 и 30 декабря · 18:00</span><span class="age">16+</span><span class="tour">Гастроли</span></div>
+<h2>Похороните меня за плинтусом</h2><p class="sub">Моноспектакль по повести Павла Санаева · реж. Роман Бокланов</p><p class="lang">Язык: русский с немецкими субтитрами</p>
+<a class="buy" href="https://fienta.com/spektakl-pohoronite-menya-za-plintusom-2" target="_blank" rel="noopener">Купить билет <span aria-hidden="true">→</span></a></div></article>
+<article class="ev">
+<a class="pic" href="https://fienta.com/novogodnyaya-noch-v-buhne-scha" target="_blank" rel="noopener"><img src="img/6_ny.jpg" alt="Празднуем Новый год в SCHA!" loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">31 декабря · с 21:00</span></div>
+<h2>Празднуем Новый год в SCHA!</h2><p class="sub">Встреча Нового года с 21:00 и до 2027</p><p class="lang">Язык: русский, но возможны сюрпризы</p>
+<a class="buy" href="https://fienta.com/novogodnyaya-noch-v-buhne-scha" target="_blank" rel="noopener">Купить билет <span aria-hidden="true">→</span></a></div></article>
+</main>
+<footer><span>Bühne SCHA! · Carl-Schurz-Str. 56 · 13597 Berlin-Spandau</span><a href="https://www.instagram.com/buehne_scha" target="_blank" rel="noopener">Instagram @buehne_scha</a><a href="https://buehne-scha.de" target="_blank" rel="noopener">buehne-scha.de</a><span>buehne-scha@bgff.de</span></footer>
+</div>
+</body>
+</html>
