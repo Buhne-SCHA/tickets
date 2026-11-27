@@ -57,8 +57,8 @@ footer a{color:var(--fg)}
 </div>
 <script>
 const T={
-ru:{h1:'Декабрь<br>в SCHA!',plate:'Билеты на все события',lead:'Kulturzentrum und Theaterbühne in der Spandauer Altstadt. Нажмите «Купить билет», и откроется страница продажи на Fienta.',buy:'Купить билет',tour:'Гастроли'},
-de:{h1:'Dezember<br>im SCHA!',plate:'Tickets für alle Veranstaltungen',lead:'Kulturzentrum und Theaterbühne in der Spandauer Altstadt. Mit „Ticket kaufen“ öffnet sich der Ticketverkauf bei Fienta.',buy:'Ticket kaufen',tour:'Gastspiel'}};
+ru:{h1:'Декабрь<br>в SCHA!',plate:'Билеты · на русском',lead:'Kulturzentrum und Theaterbühne in der Spandauer Altstadt. Здесь все события на русском языке. Нажмите «Купить билет», и откроется страница продажи на Fienta.',buy:'Купить билет',tour:'Гастроли'},
+de:{h1:'Dezember<br>im SCHA!',plate:'Tickets für deutschsprachige Gäste',lead:'Kulturzentrum und Theaterbühne in der Spandauer Altstadt. Hier finden Sie alle Vorstellungen auf Deutsch, mit deutschen Übertiteln oder im englischen Original. Mit „Ticket kaufen“ öffnet sich der Ticketverkauf bei Fienta.',buy:'Ticket kaufen',tour:'Gastspiel'}};
 const ut=(t)=>`<span class="lc ut">${t}</span>`, l=(t)=>`<span class="lc">${t}</span>`;
 const E=[
 {img:{ru:'0_italianamericans.jpg',de:'0_italianamericans_de.jpg'},url:'https://fienta.com/ru/kinolekciya-easy-pieces',
@@ -70,19 +70,18 @@ const E=[
 {img:'2_nezabyvaemyj.jpg',url:'https://fienta.com/nezabyvaemyy-sluchay-improvizacionnyy-spektakl-dlya-vzroslyh-v-buhne-scha',tour:1,
  date:{ru:'15 декабря · 20:00',de:'15. Dezember · 20:00'},age:'16+',t:{ru:'Незабываемый случай',de:'Ein unvergesslicher Vorfall'},
  sub:{ru:'Flashback Lab · импровизационный спектакль',de:'Flashback Lab · Improtheater'},lang:l('RU')},
-{img:'3_M.jpg',url:'https://fienta.com/spektakl-m-2',
+{img:{ru:'3_M.jpg',de:'3_M_de.jpg'},on:['ru','de'],url:'https://fienta.com/spektakl-m-2',
  date:{ru:'17 и 18 декабря · 20:00',de:'17. und 18. Dezember · 20:00'},age:'16+',t:{ru:'М.',de:'M.'},
  sub:{ru:'Реж. Костя Новицкий · по мотивам «Старика и моря» Эрнеста Хемингуэя',de:'Regie: Kostja Nowizki · nach „Der alte Mann und das Meer“ von Ernest Hemingway'},lang:l('RU')+ut('DE Übertitel')},
-{img:'5_kino.jpg',url:'https://fienta.com/rozhdestvenskoe-kino-v-buhne-scha',
- date:{ru:'26 декабря · 14:00 и 17:00',de:'26. Dezember · 14:00 und 17:00'},age:'6+ / 16+',t:{ru:'Рождественское кино',de:'Weihnachtskino'},
- sub:{ru:'14:00 семейный показ · 17:00 для взрослых. Чай и угощения входят в билет. Какие фильмы, секрет',de:'14:00 für die ganze Familie · 17:00 für Erwachsene. Tee und Snacks inklusive. Welche Filme? Ein Geheimnis'},
- lang:{ru:'14:00 '+l('RU')+' &nbsp;17:00 '+l('EN')+ut('RU Untertitel'),de:'14:00 '+l('RU')+' &nbsp;17:00 '+l('EN')+ut('RU Untertitel')}},
-{img:{ru:'7_korova_ru.jpg',de:'7_korova_de.jpg'},url:'https://fienta.com/ru/spektakl-korova-na-ldu-dlya-vsey-semi',
- date:{ru:'28 и 29 декабря',de:'28. und 29. Dezember'},age:'3+',t:{ru:'Корова на льду',de:'Die Kuh auf dem Eis'},
+{img:{ru:'5_kino.jpg',de:'5_kino_de.jpg'},on:['ru','de'],url:'https://fienta.com/rozhdestvenskoe-kino-v-buhne-scha',
+ date:{ru:'26 декабря · 14:00 и 17:00',de:'26. Dezember · 17:00'},age:{ru:'6+ / 16+',de:'16+'},t:{ru:'Рождественское кино',de:'Weihnachtskino'},
+ sub:{ru:'14:00 семейный показ · 17:00 для взрослых. Чай и угощения входят в билет. Какие фильмы, секрет',de:'Weihnachtsfilm für Erwachsene im englischen Original mit russischen Untertiteln. Tee und Snacks inklusive. Welcher Film? Ein Geheimnis'},
+ lang:{ru:'14:00 '+l('RU')+' &nbsp;17:00 '+l('EN')+ut('RU Untertitel'),de:l('EN')+ut('RU Untertitel')}},
+{img:{ru:'7_korova_ru.jpg',de:'7_korova_de.jpg'},on:['ru','de'],url:{ru:'https://fienta.com/ru/spektakl-korova-na-ldu-dlya-vsey-semi',de:'https://fienta.com/de/217878'},
+ date:{ru:'28 декабря · 15:00 и 18:00',de:'29. Dezember · 11:00 und 14:00'},age:'3+',t:{ru:'Корова на льду',de:'Die Kuh auf dem Eis'},
  sub:{ru:'Семейный спектакль по сказке Антона Сои · реж. Роман Бокланов',de:'Familienstück nach dem Märchen von Anton Soja · Regie: Roman Boklanov'},
- lang:{ru:'28.12 · 15:00 и 18:00 '+l('RU')+'<br>29.12 · 11:00 и 14:00 '+l('DE'),de:'28.12. · 15:00 und 18:00 '+l('RU')+'<br>29.12. · 11:00 und 14:00 '+l('DE')},
- btns:[{u:'https://fienta.com/ru/spektakl-korova-na-ldu-dlya-vsey-semi',ru:'28.12 · RU',de:'28.12. · RU'},{u:'https://fienta.com/de/217878',ru:'29.12 · DE',de:'29.12. · DE'}]},
-{img:'4_plintus.jpg',url:'https://fienta.com/spektakl-pohoronite-menya-za-plintusom-2',tour:1,
+ lang:{ru:l('RU'),de:l('DE')}},
+{img:{ru:'4_plintus.jpg',de:'4_plintus_de.jpg'},on:['ru','de'],url:'https://fienta.com/spektakl-pohoronite-menya-za-plintusom-2',tour:1,
  date:{ru:'29 и 30 декабря · 18:00',de:'29. und 30. Dezember · 18:00'},age:'16+',t:{ru:'Похороните меня за плинтусом',de:'Begrabt mich hinter der Fußleiste'},
  sub:{ru:'Моноспектакль по повести Павла Санаева · реж. Роман Бокланов',de:'Solostück nach dem Roman von Pawel Sanajew · Regie: Roman Boklanov'},lang:l('RU')+ut('DE Übertitel')},
 {img:'6_ny.jpg',url:'https://fienta.com/novogodnyaya-noch-v-buhne-scha',
@@ -95,10 +94,10 @@ function render(L){
  document.documentElement.lang=L;
  for(const k of ['h1','plate','lead']) document.getElementById(k).innerHTML=T[L][k];
  document.querySelectorAll('.lng button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L));
- document.getElementById('list').innerHTML=E.map(e=>{
-  const t=pick(e.t,L), btn=e.btns?`<div class="btns">${e.btns.map(b=>a(b.u,T[L].buy+' '+b[L])).join('')}</div>`:a(e.url,T[L].buy);
-  return `<article class="ev"><a class="pic" href="${e.url}" target="_blank" rel="noopener"><img src="../${pick(e.img,L)}" alt="${t}" loading="lazy" width="720" height="900"></a>
-<div class="info"><div class="meta"><span class="date">${pick(e.date,L)}</span>${e.age?`<span class="age">${e.age}</span>`:''}${e.tour?`<span class="tour">${T[L].tour}</span>`:''}</div>
+ document.getElementById('list').innerHTML=E.filter(e=>(e.on||['ru']).includes(L)).map(e=>{const U=pick(e.url,L);
+  const t=pick(e.t,L), btn=e.btns?`<div class="btns">${e.btns.map(b=>a(b.u,T[L].buy+' '+b[L])).join('')}</div>`:a(U,T[L].buy);
+  return `<article class="ev"><a class="pic" href="${U}" target="_blank" rel="noopener"><img src="../${pick(e.img,L)}" alt="${t}" loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">${pick(e.date,L)}</span>${e.age?`<span class="age">${pick(e.age,L)}</span>`:''}${e.tour?`<span class="tour">${T[L].tour}</span>`:''}</div>
 <h2>${t}</h2><p class="sub">${pick(e.sub,L)}</p><p class="lang">${pick(e.lang,L)}</p>${btn}</div></article>`}).join('');
  try{localStorage.setItem('scha-lang',L)}catch(_){}
 }
