@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Bühne SCHA! · Dezember / Декабрь">
+<meta property="og:image" content="../7_korova_ru.jpg">
+<title>Bühne SCHA! · Tickets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;800;900&display=swap">
+<style>
+/* Афиша-лента: чёрный зал, синие плашки SCHA!, карточка = пост + кнопка */
+:root{--bg:#000;--fg:#fff;--blue:#0D42D2;--muted:#a9adb8;--line:#22242b;--disp:"Montserrat",Arial,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}img{max-width:100%}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--disp);font-size:16px;line-height:1.45;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 56px}
+header{display:flex;flex-direction:column;gap:18px;margin-bottom:40px}
+header img{width:120px}
+h1{font-weight:800;font-size:clamp(2.2rem,7vw,4.2rem);line-height:.98;text-transform:uppercase;letter-spacing:-.02em;text-wrap:balance;margin:0}
+.plate{align-self:flex-start;background:var(--blue);font-weight:900;text-transform:uppercase;font-size:clamp(1rem,3vw,1.35rem);padding:.45em .8em .5em;transform:rotate(-1.6deg)}
+.lead{color:var(--muted);max-width:60ch;margin:0}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:40px 28px}
+.ev{display:flex;flex-direction:column;gap:16px;min-width:0}
+.pic img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.info{display:flex;flex-direction:column;gap:6px;flex:1}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.date{font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.age{border:2px solid var(--fg);font-weight:800;font-size:.8rem;padding:1px 6px}
+.tour{background:var(--blue);font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px}
+h2{font-weight:800;font-size:1.5rem;line-height:1.1;text-transform:uppercase;margin:4px 0 0;text-wrap:balance}
+.sub{margin:0;font-weight:500}
+.lang{margin:0;color:var(--muted);font-size:.9rem}
+.buy{margin-top:auto;align-self:flex-start;display:inline-flex;gap:.5em;background:var(--fg);color:var(--blue);transform:rotate(-1.6deg);text-decoration:none;font-weight:900;text-transform:uppercase;letter-spacing:.04em;padding:14px 22px;transition:background .15s,color .15s}
+.info .buy{margin-top:12px}
+.buy:hover,.buy:focus-visible{background:var(--blue);color:var(--fg)}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 28px;color:var(--muted);font-weight:300}
+footer a{color:var(--fg)}
+@media (prefers-reduced-motion:reduce){.buy{transition:none}}
+.lng{display:flex;gap:8px;align-self:flex-start}
+.lng button{font:inherit;font-weight:900;font-size:1rem;letter-spacing:.06em;background:transparent;color:var(--fg);border:2px solid var(--fg);padding:6px 14px;cursor:pointer}
+.lng button[aria-pressed="true"]{background:var(--fg);color:var(--blue)}
+.lc{background:var(--fg);color:#000;font-weight:900;font-size:.75rem;padding:2px 7px;letter-spacing:.04em}
+.lc.ut{background:var(--blue);color:var(--fg);outline:2px solid var(--fg);outline-offset:-2px}
+.btns{display:flex;flex-wrap:wrap;gap:12px 16px;margin-top:12px}
+.info .btns .buy{margin-top:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><img src="../logo.svg" alt="Bühne SCHA!">
+<div class="lng" role="group" aria-label="Sprache / Язык"><button type="button" data-l="ru">RU</button><button type="button" data-l="de">DE</button></div>
+<h1 id="h1"></h1>
+<div class="plate" id="plate"></div>
+<p class="lead" id="lead"></p></header>
+<main class="list" id="list"></main>
+<footer><span>Bühne SCHA! · Carl-Schurz-Str. 56 · 13597 Berlin-Spandau</span><a href="https://www.instagram.com/buehne_scha" target="_blank" rel="noopener">Instagram @buehne_scha</a><span>buehne-scha@bgff.de</span></footer>
+</div>
+<script>
+const T={
+ru:{h1:'Декабрь<br>в SCHA!',plate:'Билеты на все события',lead:'Kulturzentrum und Theaterbühne in der Spandauer Altstadt. Нажмите «Купить билет», и откроется страница продажи на Fienta.',buy:'Купить билет',tour:'Гастроли'},
+de:{h1:'Dezember<br>im SCHA!',plate:'Tickets für alle Veranstaltungen',lead:'Kulturzentrum und Theaterbühne in der Spandauer Altstadt. Mit „Ticket kaufen“ öffnet sich der Ticketverkauf bei Fienta.',buy:'Ticket kaufen',tour:'Gastspiel'}};
+const ut=(t)=>`<span class="lc ut">${t}</span>`, l=(t)=>`<span class="lc">${t}</span>`;
+const E=[
+{img:{ru:'0_italianamericans.jpg',de:'0_italianamericans_de.jpg'},url:'https://fienta.com/ru/kinolekciya-easy-pieces',
+ date:{ru:'12 декабря · 17:30',de:'12. Dezember · 17:30'},age:'16+',t:{ru:'Italianamericans',de:'Italianamericans'},
+ sub:{ru:'Кинолекция Easy Pieces о том, как итальянцы изменили американское кино',de:'Filmvortrag Easy Pieces: Wie Italiener das amerikanische Kino verändert haben'},lang:l('RU')},
+{img:'1_fantazia.jpg',url:'https://fienta.com/improvizacionnyy-spektakl-fantaziya-dlya-detey-v-buhne-scha',tour:1,
+ date:{ru:'15 декабря · 17:30',de:'15. Dezember · 17:30'},age:'3+',t:{ru:'Фантазия',de:'Fantasie'},
+ sub:{ru:'Flashback Lab · импровизационный спектакль для всей семьи',de:'Flashback Lab · Improtheater für die ganze Familie'},lang:l('RU')},
+{img:'2_nezabyvaemyj.jpg',url:'https://fienta.com/nezabyvaemyy-sluchay-improvizacionnyy-spektakl-dlya-vzroslyh-v-buhne-scha',tour:1,
+ date:{ru:'15 декабря · 20:00',de:'15. Dezember · 20:00'},age:'16+',t:{ru:'Незабываемый случай',de:'Ein unvergesslicher Vorfall'},
+ sub:{ru:'Flashback Lab · импровизационный спектакль',de:'Flashback Lab · Improtheater'},lang:l('RU')},
+{img:'3_M.jpg',url:'https://fienta.com/spektakl-m-2',
+ date:{ru:'17 и 18 декабря · 20:00',de:'17. und 18. Dezember · 20:00'},age:'16+',t:{ru:'М.',de:'M.'},
+ sub:{ru:'Реж. Костя Новицкий · по мотивам «Старика и моря» Эрнеста Хемингуэя',de:'Regie: Kostja Nowizki · nach „Der alte Mann und das Meer“ von Ernest Hemingway'},lang:l('RU')+ut('DE Übertitel')},
+{img:'5_kino.jpg',url:'https://fienta.com/rozhdestvenskoe-kino-v-buhne-scha',
+ date:{ru:'26 декабря · 14:00 и 17:00',de:'26. Dezember · 14:00 und 17:00'},age:'6+ / 16+',t:{ru:'Рождественское кино',de:'Weihnachtskino'},
+ sub:{ru:'14:00 семейный показ · 17:00 для взрослых. Чай и угощения входят в билет. Какие фильмы, секрет',de:'14:00 für die ganze Familie · 17:00 für Erwachsene. Tee und Snacks inklusive. Welche Filme? Ein Geheimnis'},
+ lang:{ru:'14:00 '+l('RU')+' &nbsp;17:00 '+l('EN')+ut('RU Untertitel'),de:'14:00 '+l('RU')+' &nbsp;17:00 '+l('EN')+ut('RU Untertitel')}},
+{img:{ru:'7_korova_ru.jpg',de:'7_korova_de.jpg'},url:'https://fienta.com/ru/o/44520',
+ date:{ru:'28 и 29 декабря',de:'28. und 29. Dezember'},age:'3+',t:{ru:'Корова на льду',de:'Die Kuh auf dem Eis'},
+ sub:{ru:'Семейный спектакль по сказке Антона Сои · реж. Роман Бокланов',de:'Familienstück nach dem Märchen von Anton Soja · Regie: Roman Boklanov'},
+ lang:{ru:'28.12 · 15:00 и 18:00 '+l('RU')+'<br>29.12 · 11:00 и 14:00 '+l('DE'),de:'28.12. · 15:00 und 18:00 '+l('RU')+'<br>29.12. · 11:00 und 14:00 '+l('DE')},
+ btns:[{u:'https://fienta.com/ru/o/44520',ru:'28.12 · RU',de:'28.12. · RU'},{u:'https://fienta.com/ru/o/44520',ru:'29.12 · DE',de:'29.12. · DE'}]},
+{img:'4_plintus.jpg',url:'https://fienta.com/spektakl-pohoronite-menya-za-plintusom-2',tour:1,
+ date:{ru:'29 и 30 декабря · 18:00',de:'29. und 30. Dezember · 18:00'},age:'16+',t:{ru:'Похороните меня за плинтусом',de:'Begrabt mich hinter der Fußleiste'},
+ sub:{ru:'Моноспектакль по повести Павла Санаева · реж. Роман Бокланов',de:'Solostück nach dem Roman von Pawel Sanajew · Regie: Roman Boklanov'},lang:l('RU')+ut('DE Übertitel')},
+{img:'6_ny.jpg',url:'https://fienta.com/novogodnyaya-noch-v-buhne-scha',
+ date:{ru:'31 декабря · с 21:00',de:'31. Dezember · ab 21:00'},age:'',t:{ru:'Празднуем Новый год в SCHA!',de:'Wir feiern Silvester im SCHA!'},
+ sub:{ru:'Встреча Нового года с 21:00 и до 2027',de:'Silvester feiern ab 21:00 bis ins Jahr 2027'},lang:{ru:l('RU')+' но возможны сюрпризы',de:l('RU')+' Überraschungen möglich'}}
+];
+const pick=(v,L)=>typeof v==='object'&&v!==null?v[L]:v;
+const a=(u,txt)=>`<a class="buy" href="${u}" target="_blank" rel="noopener">${txt} <span aria-hidden="true">→</span></a>`;
+function render(L){
+ document.documentElement.lang=L;
+ for(const k of ['h1','plate','lead']) document.getElementById(k).innerHTML=T[L][k];
+ document.querySelectorAll('.lng button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L));
+ document.getElementById('list').innerHTML=E.map(e=>{
+  const t=pick(e.t,L), btn=e.btns?`<div class="btns">${e.btns.map(b=>a(b.u,T[L].buy+' '+b[L])).join('')}</div>`:a(e.url,T[L].buy);
+  return `<article class="ev"><a class="pic" href="${e.url}" target="_blank" rel="noopener"><img src="../${pick(e.img,L)}" alt="${t}" loading="lazy" width="720" height="900"></a>
+<div class="info"><div class="meta"><span class="date">${pick(e.date,L)}</span>${e.age?`<span class="age">${e.age}</span>`:''}${e.tour?`<span class="tour">${T[L].tour}</span>`:''}</div>
+<h2>${t}</h2><p class="sub">${pick(e.sub,L)}</p><p class="lang">${pick(e.lang,L)}</p>${btn}</div></article>`}).join('');
+ try{localStorage.setItem('scha-lang',L)}catch(_){}
+}
+let L=new URLSearchParams(location.search).get('lang');
+if(!['ru','de'].includes(L)){try{L=localStorage.getItem('scha-lang')}catch(_){}}
+if(!['ru','de'].includes(L)) L=(navigator.language||'').toLowerCase().startsWith('de')?'de':'ru';
+document.querySelectorAll('.lng button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.l)));
+render(L);
+</script>
+</body>
+</html>
